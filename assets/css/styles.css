@@ -1,0 +1,96 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f9;
+}
+
+/* Header Section */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin: 0.5rem 0;
+    font-style: italic;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Section */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.intro {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.intro h2 {
+    margin: 0 0 1rem;
+    font-size: 2rem;
+    color: #333;
+}
+
+.intro p {
+    margin: 0 0 1.5rem;
+    color: #555;
+}
+
+.intro .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #333;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.intro .btn:hover {
+    background: #555;
+}
+
+/* Footer Section */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0;
+}
