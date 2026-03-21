@@ -92,6 +92,23 @@
     }
     .nav-cta:hover { background: var(--accent) !important; color: var(--bg) !important; }
 
+    /* ── NEW: nav resume button ── */
+    .nav-resume {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 2px; font-size: 11px;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      border: 1px solid rgba(255,209,102,0.4);
+      color: var(--gold) !important;
+      background: rgba(255,209,102,0.05);
+      transition: all 0.2s;
+    }
+    .nav-resume:hover {
+      background: rgba(255,209,102,0.12) !important;
+      border-color: var(--gold) !important;
+      color: var(--gold) !important;
+      transform: none;
+    }
+
     /* ORB */
     .orb {
       position: absolute; border-radius: 50%; filter: blur(130px);
@@ -194,6 +211,22 @@
     }
     .btn-secondary:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-2px); }
 
+    /* ── NEW: resume download button ── */
+    .btn-resume {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; background: transparent; color: var(--gold);
+      font-family: 'DM Mono', monospace; font-size: 12px;
+      letter-spacing: 0.05em; text-decoration: none;
+      border: 1px solid rgba(255,209,102,0.35); border-radius: 2px;
+      transition: all 0.2s; cursor: none;
+    }
+    .btn-resume:hover {
+      background: rgba(255,209,102,0.08);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,209,102,0.15);
+    }
+
     /* HERO CARD */
     .hero-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -218,10 +251,7 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 44px;
     }
-    .avatar-img {
-      width: 100%; height: 100%; border-radius: 50%;
-      object-fit: cover;
-    }
+    .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
     .avatar-name { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; }
     .avatar-sub { font-size:11px; color:var(--muted); text-align:center; line-height:1.6; }
     .avatar-badges { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
@@ -356,26 +386,19 @@
     }
     .reel-wrapper:hover { border-color:rgba(255,143,171,0.3); box-shadow:0 20px 60px rgba(0,0,0,0.5); transform:translateY(-4px); }
 
-    .reel-embed-container {
-      position:relative; width:100%; padding-top:177.77%;
-      background:#000;
-    }
-    .reel-embed-container iframe {
-      position:absolute; top:0; left:0; width:100%; height:100%; border:none;
-    }
+    .reel-embed-container { position:relative; width:100%; padding-top:177.77%; background:#000; }
+    .reel-embed-container iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
     .reel-fallback {
       display:none; flex-direction:column; align-items:center; justify-content:center;
-      gap:12px; padding:40px 24px; text-align:center;
-      background:var(--surface); min-height:320px;
+      gap:12px; padding:40px 24px; text-align:center; background:var(--surface); min-height:320px;
     }
     .reel-fallback-icon { font-size:40px; }
     .reel-fallback-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; }
     .reel-fallback-sub { font-size:11px; color:var(--muted); }
     .reel-fallback a {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:9px 18px; border:1px solid var(--rose); color:var(--rose);
-      border-radius:4px; font-size:11px; text-decoration:none;
-      transition:all 0.2s; margin-top:4px;
+      display:inline-flex; align-items:center; gap:8px; padding:9px 18px;
+      border:1px solid var(--rose); color:var(--rose); border-radius:4px;
+      font-size:11px; text-decoration:none; transition:all 0.2s; margin-top:4px;
     }
     .reel-fallback a:hover { background:var(--rose); color:var(--bg); }
 
@@ -390,6 +413,12 @@
     .hobby-name { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; margin-bottom:6px; }
     .hobby-desc { font-size:11px; color:var(--muted); line-height:1.6; }
 
+    /* ── NEW: card magic card gets special sparkle accent ── */
+    .hobby-card.magic:hover {
+      border-color: var(--gold);
+      background: rgba(255,209,102,0.05);
+    }
+
     /* ============ CONTACT ============ */
     .contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
     .contact-text h2 {
@@ -400,9 +429,8 @@
     .contact-text p { color:var(--muted); font-size:13px; line-height:1.8; margin-bottom:36px; }
     .contact-links { display:flex; flex-direction:column; gap:10px; }
     .contact-link {
-      display:flex; align-items:center; gap:14px;
-      padding:14px 18px; background:var(--surface);
-      border:1px solid var(--border); border-radius:6px;
+      display:flex; align-items:center; gap:14px; padding:14px 18px;
+      background:var(--surface); border:1px solid var(--border); border-radius:6px;
       text-decoration:none; color:var(--text); font-size:12px; transition:all 0.2s;
     }
     .contact-link:hover { border-color:var(--accent); color:var(--accent); transform:translateX(4px); }
@@ -436,22 +464,22 @@
 
     /* RESPONSIVE */
     @media(max-width:960px){
-      nav{padding:14px 24px;}
-      .nav-links{display:none;}
-      section{padding:80px 24px;}
-      .hero{padding:100px 24px 60px;}
-      .hero-inner{grid-template-columns:1fr; gap:40px;}
-      .hero-card{display:none;}
-      .exp-container{grid-template-columns:1fr;}
-      .exp-tabs{border-right:none;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;}
-      .exp-tab{border-left:none;border-bottom:2px solid transparent;white-space:nowrap;}
-      .exp-tab.active{border-left-color:transparent;border-bottom-color:var(--accent);}
-      .exp-panels{padding-left:0;padding-top:28px;}
-      .contact-inner{grid-template-columns:1fr;}
-      .theatre-header{flex-direction:column;}
-      footer{flex-direction:column;gap:14px;text-align:center;padding:24px;}
-      .divider{margin:0 24px;}
-      .reels-grid{grid-template-columns:1fr;}
+      nav { padding:14px 24px; }
+      .nav-links { display:none; }
+      section { padding:80px 24px; }
+      .hero { padding:100px 24px 60px; }
+      .hero-inner { grid-template-columns:1fr; gap:40px; }
+      .hero-card { display:none; }
+      .exp-container { grid-template-columns:1fr; }
+      .exp-tabs { border-right:none; border-bottom:1px solid var(--border); display:flex; overflow-x:auto; }
+      .exp-tab { border-left:none; border-bottom:2px solid transparent; white-space:nowrap; }
+      .exp-tab.active { border-left-color:transparent; border-bottom-color:var(--accent); }
+      .exp-panels { padding-left:0; padding-top:28px; }
+      .contact-inner { grid-template-columns:1fr; }
+      .theatre-header { flex-direction:column; }
+      footer { flex-direction:column; gap:14px; text-align:center; padding:24px; }
+      .divider { margin:0 24px; }
+      .reels-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -468,6 +496,8 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#theatre">Theatre & Film</a></li>
     <li><a href="#life">Life</a></li>
+    <!-- ── Resume download in nav ── -->
+    <li><a href="Harsh_Raj_Resume.pdf" download class="nav-resume">↓ Resume</a></li>
     <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
   </ul>
 </nav>
@@ -498,27 +528,17 @@
       </p>
 
       <div class="hero-stats">
-        <div>
-          <div class="stat-num">3.5<span>+</span></div>
-          <div class="stat-label">Years at Citi</div>
-        </div>
-        <div>
-          <div class="stat-num">1</div>
-          <div class="stat-label">IMDb credit</div>
-        </div>
-        <div>
-          <div class="stat-num">99.9<span>%</span></div>
-          <div class="stat-label">Uptime</div>
-        </div>
-        <div>
-          <div class="stat-num">37</div>
-          <div class="stat-label">IMO World Rank</div>
-        </div>
+        <div><div class="stat-num">3.5<span>+</span></div><div class="stat-label">Years at Citi</div></div>
+        <div><div class="stat-num">1</div><div class="stat-label">IMDb credit</div></div>
+        <div><div class="stat-num">99.9<span>%</span></div><div class="stat-label">Uptime</div></div>
+        <div><div class="stat-num">37</div><div class="stat-label">IMO World Rank</div></div>
       </div>
 
       <div class="hero-actions">
         <a href="mailto:hrsraj1999g@gmail.com" class="btn-primary">↗ Get in touch</a>
         <a href="https://www.instagram.com/hrs.gupta/" target="_blank" class="btn-secondary">Watch my reels 🎬</a>
+        <!-- ── Resume download in hero ── -->
+        <a href="Harsh_Raj_Resume.pdf" download class="btn-resume">↓ Download Resume</a>
       </div>
       <div class="iit-badge">🎓 IIT Bombay · B.Tech 2018–2022</div>
     </div>
@@ -545,18 +565,9 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-stats">
-        <div class="cstat">
-          <div class="cstat-num">10K+</div>
-          <div class="cstat-label">Docs/day</div>
-        </div>
-        <div class="cstat">
-          <div class="cstat-num">1</div>
-          <div class="cstat-label">Film</div>
-        </div>
-        <div class="cstat">
-          <div class="cstat-num">$37M</div>
-          <div class="cstat-label">Trade Vol.</div>
-        </div>
+        <div class="cstat"><div class="cstat-num">10K+</div><div class="cstat-label">Docs/day</div></div>
+        <div class="cstat"><div class="cstat-num">1</div><div class="cstat-label">Film</div></div>
+        <div class="cstat"><div class="cstat-num">$37M</div><div class="cstat-label">Trade Vol.</div></div>
       </div>
     </div>
   </div>
@@ -776,15 +787,7 @@
 
       <div class="reel-wrapper reveal">
         <div class="reel-embed-container" id="reel1-container">
-          <iframe
-            id="reel1-iframe"
-            src="https://www.instagram.com/reel/DVazd4zjFDL/embed/captioned/"
-            allowtransparency="true"
-            allowfullscreen="true"
-            frameborder="0"
-            scrolling="no"
-            loading="lazy"
-          ></iframe>
+          <iframe id="reel1-iframe" src="https://www.instagram.com/reel/DVazd4zjFDL/embed/captioned/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no" loading="lazy"></iframe>
         </div>
         <div class="reel-fallback" id="reel1-fallback">
           <div class="reel-fallback-icon">🎬</div>
@@ -796,15 +799,7 @@
 
       <div class="reel-wrapper reveal">
         <div class="reel-embed-container" id="reel2-container">
-          <iframe
-            id="reel2-iframe"
-            src="https://www.instagram.com/reel/DI83TZLyR5d/embed/captioned/"
-            allowtransparency="true"
-            allowfullscreen="true"
-            frameborder="0"
-            scrolling="no"
-            loading="lazy"
-          ></iframe>
+          <iframe id="reel2-iframe" src="https://www.instagram.com/reel/DI83TZLyR5d/embed/captioned/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no" loading="lazy"></iframe>
         </div>
         <div class="reel-fallback" id="reel2-fallback">
           <div class="reel-fallback-icon">🎬</div>
@@ -817,9 +812,7 @@
     </div>
 
     <div style="margin-top:28px;text-align:center;">
-      <a href="https://www.instagram.com/hrs.gupta/" target="_blank" class="btn-secondary" style="display:inline-flex;">
-        See all reels @hrs.gupta ↗
-      </a>
+      <a href="https://www.instagram.com/hrs.gupta/" target="_blank" class="btn-secondary" style="display:inline-flex;">See all reels @hrs.gupta ↗</a>
     </div>
   </div>
 </section>
@@ -842,6 +835,12 @@
         <span class="hobby-emoji">🎤</span>
         <div class="hobby-name">Comedy Gigs</div>
         <div class="hobby-desc">Writing and performing stand-up comedy. Turning everyday chaos (and git merge conflicts) into laughs on stage.</div>
+      </div>
+      <!-- ── NEW: Card Magic ── -->
+      <div class="hobby-card magic reveal">
+        <span class="hobby-emoji">🃏</span>
+        <div class="hobby-name">Card Magic</div>
+        <div class="hobby-desc">Sleight of hand, misdirection, and the art of the impossible. A hobby that rewards the same obsessive practice as mastering any craft.</div>
       </div>
       <div class="hobby-card reveal">
         <span class="hobby-emoji">✈️</span>
@@ -899,6 +898,11 @@
             <div class="contact-link-icon" style="background:rgba(245,197,24,0.1);">🎬</div>
             <div><div class="contact-link-label">IMDb</div><div>nm15672094</div></div>
           </a>
+          <!-- ── Resume download in contact too ── -->
+          <a href="Harsh_Raj_Resume.pdf" download class="contact-link">
+            <div class="contact-link-icon" style="background:rgba(255,209,102,0.08);">📄</div>
+            <div><div class="contact-link-label">Resume</div><div>Download PDF</div></div>
+          </a>
         </div>
       </div>
 
@@ -926,13 +930,14 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">
-    Designed & built by <strong>Harsh Raj</strong> · Engineer · Actor · IIT Bombay'22 · Pune, India
+    Designed &amp; built by <strong>Harsh Raj</strong> · Engineer · Actor · IIT Bombay'22 · Pune, India
   </div>
   <div class="footer-right">
     <a href="https://github.com/hrsraj" target="_blank">GitHub</a>
     <a href="https://www.linkedin.com/in/harsh-raj-8539a8172/" target="_blank">LinkedIn</a>
     <a href="https://www.instagram.com/hrs.gupta/" target="_blank">Instagram</a>
     <a href="https://www.imdb.com/name/nm15672094/" target="_blank">IMDb</a>
+    <a href="Harsh_Raj_Resume.pdf" download>Resume</a>
   </div>
 </footer>
 
@@ -978,8 +983,6 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
   // ——— INSTAGRAM REEL FALLBACK ———
-  // Instagram embeds may be blocked by browser privacy settings.
-  // Show a clickable fallback card if the iframe doesn't load within 5s.
   function setupReelFallback(iframeId, containerId, fallbackId) {
     const iframe = document.getElementById(iframeId);
     if (!iframe) return;
