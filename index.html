@@ -3,1020 +3,631 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Harsh Raj — Senior Backend Engineer at Citi, Actor, and Comedy Creator. IIT Bombay alumnus. IMO World Rank 37."/>
+  <meta name="author" content="Harsh Raj"/>
+  <meta property="og:title" content="Harsh Raj — Engineer · Actor · Creator"/>
+  <meta property="og:description" content="Senior Backend Engineer at Citi. 3 IMDb credits. IIT Bombay '22."/>
+  <meta property="og:url" content="https://hrsraj.github.io"/>
+  <meta property="og:type" content="website"/>
   <title>Harsh Raj — Engineer · Actor · Creator</title>
-  <link rel="icon" href="assets/images/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #060810;
-      --bg2: #0a0e18;
-      --surface: #0f1520;
-      --surface2: #141c2a;
-      --border: rgba(255,255,255,0.07);
-      --accent: #00e5ff;
-      --accent2: #7b61ff;
-      --accent3: #ff6b6b;
-      --gold: #ffd166;
-      --rose: #ff8fab;
-      --text: #e8edf5;
-      --muted: #6b7a99;
-      --glow: 0 0 60px rgba(0,229,255,0.12);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      line-height: 1.7;
-      overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* CURSOR */
-    #cursor {
-      position: fixed; width: 10px; height: 10px;
-      background: var(--accent); border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transition: transform 0.15s ease, background 0.2s;
-      mix-blend-mode: screen; transform: translate(-50%,-50%);
-    }
-    #cursor-ring {
-      position: fixed; width: 38px; height: 38px;
-      border: 1px solid rgba(0,229,255,0.35);
-      border-radius: 50%; pointer-events: none; z-index: 9998;
-      transition: transform 0.08s ease, border-color 0.2s;
-      transform: translate(-50%,-50%);
-    }
-
-    /* GRID BACKGROUND */
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,229,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,229,255,0.02) 1px, transparent 1px);
-      background-size: 64px 64px;
-      pointer-events: none; z-index: 0;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 52px;
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(24px);
-      background: rgba(6,8,16,0.75);
-    }
-    .nav-logo {
-      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px;
-      letter-spacing: -0.5px; color: var(--text); text-decoration: none;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 11px;
-      letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-cta {
-      border: 1px solid var(--accent) !important; color: var(--accent) !important;
-      padding: 7px 18px; border-radius: 2px; transition: all 0.2s !important;
-    }
-    .nav-cta:hover { background: var(--accent) !important; color: var(--bg) !important; }
-
-    /* ORB */
-    .orb {
-      position: absolute; border-radius: 50%; filter: blur(130px);
-      pointer-events: none; animation: float 9s ease-in-out infinite;
-    }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-28px)} }
-
-    /* SECTIONS */
-    section { position: relative; z-index: 1; padding: 110px 52px; }
-    .section-inner { max-width: 1160px; margin: 0 auto; }
-    .section-label {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 14px;
-    }
-    .section-label::after { content:''; flex:1; height:1px; background:var(--border); max-width:50px; }
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(34px, 4.5vw, 58px);
-      font-weight: 800; letter-spacing: -1.5px; line-height: 1.05;
-      margin-bottom: 60px;
-    }
-    .section-title em {
-      font-family: 'Instrument Serif', serif; font-style: italic;
-      color: var(--accent); font-weight: 400;
-    }
-    .alt-bg { background: var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-    .divider { height:1px; background:var(--border); margin:0 52px; position:relative; z-index:1; }
-
-    /* REVEAL */
-    .reveal { opacity:0; transform:translateY(22px); transition:opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-
-    /* ============ HERO ============ */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 120px 52px 80px; overflow: hidden;
-    }
-    .hero-inner {
-      max-width: 1160px; width: 100%; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 400px; gap: 72px; align-items: center;
-    }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 22px;
-    }
-    .hero-tag::before { content:''; width:22px; height:1px; background:var(--accent); }
-    .dot-live {
-      width:7px; height:7px; border-radius:50%; background:#4ade80;
-      box-shadow:0 0 8px #4ade80; animation:pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-    .hero h1 {
-      font-family: 'Syne', sans-serif; font-size: clamp(52px, 7vw, 88px);
-      font-weight: 800; line-height: 0.95; letter-spacing: -3px; margin-bottom: 6px;
-    }
-    .name-accent {
-      display: block;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero-subtitle {
-      font-family: 'Instrument Serif', serif; font-size: 20px;
-      color: var(--muted); font-style: italic; margin: 14px 0 28px;
-    }
-    .dual-identity { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
-    .identity-pill {
-      display: flex; align-items: center; gap: 8px;
-      padding: 7px 16px; border-radius: 100px;
-      font-size: 11px; letter-spacing: 0.06em; border: 1px solid;
-    }
-    .pill-eng { border-color: rgba(0,229,255,0.3); color: var(--accent); background: rgba(0,229,255,0.05); }
-    .pill-act { border-color: rgba(255,143,171,0.3); color: var(--rose); background: rgba(255,143,171,0.05); }
-    .pill-cre { border-color: rgba(255,209,102,0.3); color: var(--gold); background: rgba(255,209,102,0.05); }
-
-    .hero-desc { color: var(--muted); font-size: 13px; line-height: 1.85; max-width: 440px; margin-bottom: 36px; }
-
-    .hero-stats { display: flex; gap: 28px; margin-bottom: 44px; flex-wrap: wrap; }
-    .stat-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--text); line-height: 1; }
-    .stat-num span { color: var(--accent); }
-    .stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 3px; }
-
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 26px; background: var(--accent); color: var(--bg);
-      font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500;
-      letter-spacing: 0.05em; text-decoration: none; border-radius: 2px;
-      transition: all 0.2s; border: none; cursor: none;
-    }
-    .btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,229,255,0.3); }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 26px; background: transparent; color: var(--text);
-      font-family: 'DM Mono', monospace; font-size: 12px;
-      letter-spacing: 0.05em; text-decoration: none;
-      border: 1px solid var(--border); border-radius: 2px; transition: all 0.2s; cursor: none;
-    }
-    .btn-secondary:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-2px); }
-
-    /* HERO CARD */
-    .hero-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden;
-      box-shadow: var(--glow), 0 40px 80px rgba(0,0,0,0.5);
-    }
-    .card-header {
-      display: flex; align-items: center; gap: 7px;
-      padding: 13px 18px; background: var(--surface2); border-bottom: 1px solid var(--border);
-    }
-    .dot { width:10px; height:10px; border-radius:50%; }
-    .dot.r { background:#ff5f57; } .dot.y { background:#ffbd2e; } .dot.g { background:#28c840; }
-    .card-title { margin-left:8px; font-size:10px; color:var(--muted); letter-spacing:0.1em; }
-    .avatar-wrap {
-      padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px;
-    }
-    .avatar-ring {
-      width: 110px; height: 110px; border-radius: 50%;
-      border: 2px solid var(--accent); padding: 4px;
-      box-shadow: 0 0 30px rgba(0,229,255,0.25);
-      background: var(--surface2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 44px;
-    }
-    .avatar-img {
-      width: 100%; height: 100%; border-radius: 50%;
-      object-fit: cover;
-    }
-    .avatar-name { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; }
-    .avatar-sub { font-size:11px; color:var(--muted); text-align:center; line-height:1.6; }
-    .avatar-badges { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
-    .avatar-badge { font-size:10px; padding:3px 10px; border-radius:20px; border:1px solid var(--border); color:var(--muted); }
-    .card-divider { height:1px; background:var(--border); margin:0 20px; }
-    .card-stats { display:grid; grid-template-columns:1fr 1fr 1fr; padding:20px; }
-    .cstat { text-align:center; padding:8px 0; }
-    .cstat:not(:last-child) { border-right: 1px solid var(--border); }
-    .cstat-num { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:var(--accent); }
-    .cstat-label { font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; }
-
-    .iit-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,209,102,0.06); border:1px solid rgba(255,209,102,0.2);
-      color: var(--gold); font-size:11px; padding:5px 14px;
-      border-radius:20px; margin-top:16px; letter-spacing:0.05em;
-    }
-
-    /* ============ EXPERIENCE ============ */
-    .exp-container { display:grid; grid-template-columns:260px 1fr; gap:0; }
-    .exp-tabs { border-right:1px solid var(--border); }
-    .exp-tab {
-      display:block; padding:18px 22px; cursor:none;
-      border-left:2px solid transparent; transition:all 0.2s;
-      color:var(--muted); font-size:12px;
-    }
-    .exp-tab:hover { color:var(--text); background:rgba(255,255,255,0.02); }
-    .exp-tab.active { border-left-color:var(--accent); color:var(--accent); background:rgba(0,229,255,0.04); }
-    .exp-tab-company { font-weight:500; margin-bottom:2px; }
-    .exp-tab-period { font-size:10px; color:var(--muted); }
-    .exp-panels { padding-left:44px; }
-    .exp-panel { display:none; }
-    .exp-panel.active { display:block; animation:fadeUp 0.3s ease; }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-    .exp-role { font-family:'Syne',sans-serif; font-size:22px; font-weight:700; margin-bottom:4px; }
-    .exp-company { color:var(--accent); font-size:13px; margin-bottom:4px; }
-    .exp-period { color:var(--muted); font-size:10px; margin-bottom:26px; letter-spacing:0.12em; }
-    .exp-bullets { list-style:none; display:flex; flex-direction:column; gap:14px; }
-    .exp-bullets li { display:flex; gap:12px; font-size:13px; color:var(--muted); line-height:1.7; }
-    .exp-bullets li::before { content:'▹'; color:var(--accent); flex-shrink:0; margin-top:1px; }
-    .exp-bullets li strong { color:var(--text); font-weight:500; }
-    .exp-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:26px; }
-    .tag { padding:4px 12px; border:1px solid var(--border); border-radius:2px; font-size:10px; color:var(--muted); letter-spacing:0.05em; }
-
-    /* ============ SKILLS ============ */
-    .skills-grid {
-      display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
-      gap:1px; background:var(--border); border:1px solid var(--border); border-radius:8px; overflow:hidden;
-    }
-    .skill-card { background:var(--surface); padding:28px; transition:background 0.2s; }
-    .skill-card:hover { background:var(--surface2); }
-    .skill-icon { width:38px; height:38px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:14px; }
-    .skill-name { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; margin-bottom:12px; }
-    .skill-items { display:flex; flex-wrap:wrap; gap:6px; }
-    .skill-chip { font-size:10px; padding:3px 10px; border-radius:20px; letter-spacing:0.04em; }
-
-    /* ============ PROJECTS ============ */
-    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:18px; }
-    .project-card {
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:8px; padding:28px; transition:all 0.25s; position:relative; overflow:hidden;
-    }
-    .project-card::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:2px;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease;
-    }
-    .project-card:hover::before { transform:scaleX(1); }
-    .project-card:hover { border-color:rgba(0,229,255,0.2); transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,0.4), var(--glow); }
-    .project-num { font-size:10px; color:var(--muted); letter-spacing:0.18em; margin-bottom:14px; }
-    .project-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:10px; }
-    .project-desc { font-size:12px; color:var(--muted); line-height:1.8; margin-bottom:18px; }
-    .project-badge { display:inline-flex; align-items:center; gap:6px; font-size:10px; color:var(--gold); border:1px solid rgba(255,209,102,0.3); padding:3px 10px; border-radius:20px; margin-bottom:14px; }
-
-    /* ============ ACCOMPLISHMENTS ============ */
-    .accolades-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; }
-    .accolade-card {
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:8px; padding:24px; display:flex; gap:14px;
-      align-items:flex-start; transition:all 0.2s;
-    }
-    .accolade-card:hover { border-color:rgba(0,229,255,0.15); background:var(--surface2); }
-    .accolade-icon { font-size:26px; flex-shrink:0; }
-    .accolade-title { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; margin-bottom:5px; }
-    .accolade-desc { font-size:11px; color:var(--muted); line-height:1.6; }
-
-    /* ============ THEATRE & FILM ============ */
-    .theatre-header {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      gap: 40px; margin-bottom: 52px; flex-wrap: wrap;
-    }
-    .theatre-intro { max-width: 520px; }
-    .theatre-intro p { color:var(--muted); font-size:13px; line-height:1.85; }
-    .imdb-link {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 22px; background: rgba(245,197,24,0.08);
-      border: 1px solid rgba(245,197,24,0.3); border-radius: 6px;
-      color: #f5c518; font-size: 13px; text-decoration: none;
-      font-family:'Syne',sans-serif; font-weight:700;
-      transition: all 0.2s; white-space:nowrap; flex-shrink:0; margin-top:4px;
-    }
-    .imdb-link:hover { background:rgba(245,197,24,0.15); transform:translateY(-2px); }
-
-    .films-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-bottom:56px; }
-    .film-card {
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:8px; padding:28px; transition:all 0.25s; position:relative; overflow:hidden;
-    }
-    .film-card::after {
-      content:''; position:absolute; inset:0;
-      background:linear-gradient(135deg, rgba(255,143,171,0.05), transparent);
-      opacity:0; transition:opacity 0.3s;
-    }
-    .film-card:hover::after { opacity:1; }
-    .film-card:hover { border-color:rgba(255,143,171,0.25); transform:translateY(-4px); box-shadow:0 20px 50px rgba(0,0,0,0.4); }
-    .film-year { font-size:10px; color:var(--muted); letter-spacing:0.18em; margin-bottom:10px; }
-    .film-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:6px; }
-    .film-role { font-size:11px; color:var(--rose); margin-bottom:12px; letter-spacing:0.05em; }
-    .film-desc { font-size:12px; color:var(--muted); line-height:1.7; }
-
-    /* Reels */
-    .reels-label {
-      font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
-      color:var(--rose); margin-bottom:20px; display:flex; align-items:center; gap:10px;
-    }
-    .reels-label::after { content:''; flex:1; height:1px; background:var(--border); max-width:40px; }
-    .reels-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; }
-
-    .reel-wrapper {
-      border-radius:12px; overflow:hidden; border:1px solid var(--border);
-      background:var(--surface); transition:all 0.25s;
-    }
-    .reel-wrapper:hover { border-color:rgba(255,143,171,0.3); box-shadow:0 20px 60px rgba(0,0,0,0.5); transform:translateY(-4px); }
-
-    .reel-embed-container {
-      position:relative; width:100%; padding-top:177.77%;
-      background:#000;
-    }
-    .reel-embed-container iframe {
-      position:absolute; top:0; left:0; width:100%; height:100%; border:none;
-    }
-    .reel-fallback {
-      display:none; flex-direction:column; align-items:center; justify-content:center;
-      gap:12px; padding:40px 24px; text-align:center;
-      background:var(--surface); min-height:320px;
-    }
-    .reel-fallback-icon { font-size:40px; }
-    .reel-fallback-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; }
-    .reel-fallback-sub { font-size:11px; color:var(--muted); }
-    .reel-fallback a {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:9px 18px; border:1px solid var(--rose); color:var(--rose);
-      border-radius:4px; font-size:11px; text-decoration:none;
-      transition:all 0.2s; margin-top:4px;
-    }
-    .reel-fallback a:hover { background:var(--rose); color:var(--bg); }
-
-    /* ============ HOBBIES ============ */
-    .hobbies-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; }
-    .hobby-card {
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:8px; padding:28px 22px; text-align:center; transition:all 0.25s; cursor:none;
-    }
-    .hobby-card:hover { border-color:var(--accent2); background:rgba(123,97,255,0.06); transform:translateY(-4px); }
-    .hobby-emoji { font-size:32px; margin-bottom:12px; display:block; }
-    .hobby-name { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; margin-bottom:6px; }
-    .hobby-desc { font-size:11px; color:var(--muted); line-height:1.6; }
-
-    /* ============ CONTACT ============ */
-    .contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
-    .contact-text h2 {
-      font-family:'Syne',sans-serif; font-size:clamp(34px,4vw,52px);
-      font-weight:800; letter-spacing:-1.5px; line-height:1.05; margin-bottom:22px;
-    }
-    .contact-text h2 em { font-family:'Instrument Serif',serif; font-style:italic; color:var(--accent); font-weight:400; }
-    .contact-text p { color:var(--muted); font-size:13px; line-height:1.8; margin-bottom:36px; }
-    .contact-links { display:flex; flex-direction:column; gap:10px; }
-    .contact-link {
-      display:flex; align-items:center; gap:14px;
-      padding:14px 18px; background:var(--surface);
-      border:1px solid var(--border); border-radius:6px;
-      text-decoration:none; color:var(--text); font-size:12px; transition:all 0.2s;
-    }
-    .contact-link:hover { border-color:var(--accent); color:var(--accent); transform:translateX(4px); }
-    .contact-link-icon { width:34px; height:34px; border-radius:6px; background:var(--surface2); display:flex; align-items:center; justify-content:center; font-size:15px; }
-    .contact-link-label { font-size:10px; color:var(--muted); }
-    .contact-right { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:36px; }
-    .contact-right h3 { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; margin-bottom:6px; }
-    .contact-right p { color:var(--muted); font-size:12px; margin-bottom:24px; }
-    .form-group { margin-bottom:18px; }
-    .form-group label { display:block; font-size:10px; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); margin-bottom:7px; }
-    .form-group input, .form-group textarea {
-      width:100%; background:var(--bg); border:1px solid var(--border);
-      border-radius:4px; padding:11px 14px; color:var(--text);
-      font-family:'DM Mono',monospace; font-size:12px; outline:none;
-      transition:border-color 0.2s; resize:none;
-    }
-    .form-group input:focus, .form-group textarea:focus { border-color:var(--accent); }
-    .form-group textarea { height:90px; }
-
-    /* FOOTER */
-    footer {
-      border-top:1px solid var(--border); padding:28px 52px;
-      display:flex; justify-content:space-between; align-items:center;
-      position:relative; z-index:1;
-    }
-    .footer-left { font-size:11px; color:var(--muted); }
-    .footer-left strong { color:var(--text); }
-    .footer-right { display:flex; gap:22px; }
-    .footer-right a { color:var(--muted); font-size:10px; text-decoration:none; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s; }
-    .footer-right a:hover { color:var(--accent); }
-
-    /* RESPONSIVE */
-    @media(max-width:960px){
-      nav{padding:14px 24px;}
-      .nav-links{display:none;}
-      section{padding:80px 24px;}
-      .hero{padding:100px 24px 60px;}
-      .hero-inner{grid-template-columns:1fr; gap:40px;}
-      .hero-card{display:none;}
-      .exp-container{grid-template-columns:1fr;}
-      .exp-tabs{border-right:none;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;}
-      .exp-tab{border-left:none;border-bottom:2px solid transparent;white-space:nowrap;}
-      .exp-tab.active{border-left-color:transparent;border-bottom-color:var(--accent);}
-      .exp-panels{padding-left:0;padding-top:28px;}
-      .contact-inner{grid-template-columns:1fr;}
-      .theatre-header{flex-direction:column;}
-      footer{flex-direction:column;gap:14px;text-align:center;padding:24px;}
-      .divider{margin:0 24px;}
-      .reels-grid{grid-template-columns:1fr;}
-    }
-  </style>
+  <link rel="icon" href="assets/images/favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+  <!-- Custom cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">HR<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#theatre">Theatre & Film</a></li>
-    <li><a href="#life">Life</a></li>
-    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
-  </ul>
-</nav>
+  <!-- ════════════════════ NAV ════════════════════ -->
+  <nav>
+    <a href="index.html" class="nav-logo">HR<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#theatre">Theatre & Film</a></li>
+      <li><a href="#life">Life</a></li>
+      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+  </nav>
 
-<!-- HERO -->
-<section class="hero" id="about">
-  <div class="orb" style="width:500px;height:500px;background:rgba(0,229,255,0.06);top:-80px;right:-60px;"></div>
-  <div class="orb" style="width:380px;height:380px;background:rgba(255,143,171,0.05);bottom:-60px;left:180px;animation-delay:-4s;"></div>
-  <div class="orb" style="width:300px;height:300px;background:rgba(123,97,255,0.05);top:40%;left:-80px;animation-delay:-2s;"></div>
+  <!-- ════════════════════ HERO ════════════════════ -->
+  <section class="hero" id="about">
+    <!-- Ambient orbs -->
+    <div class="orb" style="width:500px;height:500px;background:rgba(0,229,255,0.06);top:-80px;right:-60px;"></div>
+    <div class="orb" style="width:380px;height:380px;background:rgba(255,143,171,0.05);bottom:-60px;left:180px;animation-delay:-4s;"></div>
+    <div class="orb" style="width:300px;height:300px;background:rgba(123,97,255,0.05);top:40%;left:-80px;animation-delay:-2s;"></div>
 
-  <div class="hero-inner">
-    <div>
-      <div class="hero-tag"><div class="dot-live"></div> Open to opportunities</div>
-      <h1>Harsh<br><span class="name-accent">Raj</span></h1>
-      <p class="hero-subtitle">Engineer · Actor · Creator</p>
+    <div class="hero-inner">
 
-      <div class="dual-identity">
-        <span class="identity-pill pill-eng">⚡ Backend Engineer @ Citi</span>
-        <span class="identity-pill pill-act">🎭 Actor on IMDb</span>
-        <span class="identity-pill pill-cre">🎬 Comedy Creator</span>
+      <!-- Left — copy -->
+      <div>
+        <div class="hero-tag">
+          <div class="dot-live"></div> Open to opportunities
+        </div>
+
+        <h1>Harsh<br><span class="name-accent">Raj</span></h1>
+        <p class="hero-subtitle">Engineer · Actor · Creator</p>
+
+        <div class="dual-identity">
+          <span class="identity-pill pill-eng">⚡ Backend Engineer @ Citi</span>
+          <span class="identity-pill pill-act">🎭 Actor on IMDb</span>
+          <span class="identity-pill pill-cre">🎬 Comedy Creator</span>
+        </div>
+
+        <p class="hero-desc">
+          By day I build invisible infrastructure powering fintech at scale —
+          distributed systems, AI pipelines, and microservices handling 10K+ daily workflows.
+          By night I act in films, perform comedy gigs, and explore life beyond the terminal.
+          IIT Bombay alumnus. IMO World Rank 37.
+        </p>
+
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">3.5<span>+</span></div>
+            <div class="stat-label">Years at Citi</div>
+          </div>
+          <div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">IMDb credits</div>
+          </div>
+          <div>
+            <div class="stat-num">99.9<span>%</span></div>
+            <div class="stat-label">Uptime</div>
+          </div>
+          <div>
+            <div class="stat-num">37</div>
+            <div class="stat-label">IMO World Rank</div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="mailto:hrsraj1999g@gmail.com" class="btn-primary">↗ Get in touch</a>
+          <a href="https://www.instagram.com/hrs.gupta/" target="_blank" rel="noopener" class="btn-secondary">Watch my reels 🎬</a>
+        </div>
+
+        <div class="iit-badge">🎓 IIT Bombay · B.Tech 2018–2022</div>
       </div>
 
-      <p class="hero-desc">
-        By day, I build invisible infrastructure powering fintech at scale —
-        distributed systems, AI pipelines, and microservices handling 10K+ daily workflows.
-        By night, I act in films, perform at comedy gigs, and explore life beyond the terminal.
-        IIT Bombay alumnus. IMO World Rank 37.
+      <!-- Right — profile card -->
+      <div class="hero-card reveal">
+        <div class="card-header">
+          <div class="dot r"></div>
+          <div class="dot y"></div>
+          <div class="dot g"></div>
+          <div class="card-title">harsh@portfolio ~ identity</div>
+        </div>
+        <div class="avatar-wrap">
+          <div class="avatar-ring">
+            <img
+              src="assets/images/favicon.ico"
+              alt="Harsh Raj"
+              class="avatar-img"
+              onerror="this.style.display='none';this.parentElement.innerHTML='👨&#x200D;💻';"
+            />
+          </div>
+          <div class="avatar-name">Harsh Raj</div>
+          <div class="avatar-sub">
+            Senior Backend Engineer · Actor<br>
+            IIT Bombay '22 · Pune, India 🇮🇳
+          </div>
+          <div class="avatar-badges">
+            <span class="avatar-badge">Java</span>
+            <span class="avatar-badge">Spring Boot</span>
+            <span class="avatar-badge">LLM</span>
+            <span class="avatar-badge">Fintech</span>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-stats">
+          <div class="cstat">
+            <div class="cstat-num">10K+</div>
+            <div class="cstat-label">Docs/day</div>
+          </div>
+          <div class="cstat">
+            <div class="cstat-num">3</div>
+            <div class="cstat-label">Films</div>
+          </div>
+          <div class="cstat">
+            <div class="cstat-num">$37M</div>
+            <div class="cstat-label">Trade Vol.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════ EXPERIENCE ════════════════════ -->
+  <div class="divider"></div>
+  <section id="experience">
+    <div class="section-inner">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Where I've <em>shipped</em> things</h2>
+
+      <div class="exp-container reveal">
+        <!-- Tab list -->
+        <div class="exp-tabs">
+          <div class="exp-tab active" onclick="showTab(0)">
+            <div class="exp-tab-company">Citi · KYC Tech</div>
+            <div class="exp-tab-period">Apr 2025 – Present</div>
+          </div>
+          <div class="exp-tab" onclick="showTab(1)">
+            <div class="exp-tab-company">Citi Commercial Bank</div>
+            <div class="exp-tab-period">Jul 2023 – Apr 2025</div>
+          </div>
+          <div class="exp-tab" onclick="showTab(2)">
+            <div class="exp-tab-company">Citi · Client Insight</div>
+            <div class="exp-tab-period">Jul 2022 – Jul 2023</div>
+          </div>
+        </div>
+
+        <!-- Tab panels -->
+        <div class="exp-panels">
+
+          <div class="exp-panel active">
+            <div class="exp-role">Senior Software Engineer</div>
+            <div class="exp-company">↗ Citi — KYC Technology</div>
+            <div class="exp-period">APR 2025 – PRESENT</div>
+            <ul class="exp-bullets">
+              <li>Building an <strong>AI-powered KYC document processing platform</strong> with async Spring Boot microservices — reducing manual validation effort by <strong>50%</strong> and handling <strong>10K+ documents/day</strong>.</li>
+              <li>Designed end-to-end microservices architecture with <strong>centralized OAuth2 API Gateway</strong>, Eureka service discovery, distributed caching, and observability — <strong>99.9% availability</strong>, <strong>~30% lower auth overhead</strong>.</li>
+              <li>Architected an <strong>AI-driven Sprint Analytics platform</strong> generating JIRA-linked performance insights via a distributed caching layer for low-latency enterprise reporting.</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag">Spring Boot</span>
+              <span class="tag">OAuth2</span>
+              <span class="tag">Eureka</span>
+              <span class="tag">LLM Integration</span>
+              <span class="tag">Hazelcast</span>
+              <span class="tag">Microservices</span>
+            </div>
+          </div>
+
+          <div class="exp-panel">
+            <div class="exp-role">SDE-2</div>
+            <div class="exp-company">↗ Citi Commercial Bank</div>
+            <div class="exp-period">JUL 2023 – APR 2025</div>
+            <ul class="exp-bullets">
+              <li>Led backend of a <strong>global skill analytics platform</strong> with Hazelcast caching, achieving <strong>2x API throughput</strong>.</li>
+              <li>Independently built a <strong>distributed load simulation platform</strong> — CI/CD, no-code config, 10K+ concurrent users. <strong>Top 3 of 80+ projects</strong> at Citi 2023–24.</li>
+              <li>Modularized a legacy monolith into a <strong>micro-frontend architecture</strong>, improving deployment agility and system maintainability.</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag">Hazelcast</span>
+              <span class="tag">Locust</span>
+              <span class="tag">CI/CD</span>
+              <span class="tag">Jenkins</span>
+              <span class="tag">React</span>
+              <span class="tag">Docker</span>
+            </div>
+          </div>
+
+          <div class="exp-panel">
+            <div class="exp-role">Developer</div>
+            <div class="exp-company">↗ Citi — Client Insight Analytics</div>
+            <div class="exp-period">JUL 2022 – JUL 2023</div>
+            <ul class="exp-bullets">
+              <li>Built trade fee approval microservices processing <strong>650+ tickets/month</strong>, <strong>$37M+ trade volume</strong>, cutting manual handling time by <strong>80%</strong>.</li>
+              <li>Implemented an <strong>Istio service mesh observability stack</strong> on OpenShift for telemetry, tracing, and performance monitoring.</li>
+              <li>Redesigned backend contracts during PrimeNG → AG Grid migration, boosting <strong>dashboard load time by 40–60%</strong>.</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag">Istio</span>
+              <span class="tag">OpenShift</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">AG Grid</span>
+              <span class="tag">Java</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+
+        </div><!-- /exp-panels -->
+      </div><!-- /exp-container -->
+    </div>
+  </section>
+
+  <!-- ════════════════════ SKILLS ════════════════════ -->
+  <section class="alt-bg" id="skills">
+    <div class="section-inner">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">The <em>stack</em> I live in</h2>
+
+      <div class="skills-grid reveal">
+        <div class="skill-card">
+          <div class="skill-icon" style="background:rgba(0,229,255,0.08)">⚡</div>
+          <div class="skill-name">Languages</div>
+          <div class="skill-items">
+            <span class="skill-chip" style="background:rgba(0,229,255,0.08);color:var(--accent)">Java</span>
+            <span class="skill-chip" style="background:rgba(0,229,255,0.08);color:var(--accent)">Python</span>
+            <span class="skill-chip" style="background:rgba(0,229,255,0.08);color:var(--accent)">SQL</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:rgba(123,97,255,0.08)">🏗️</div>
+          <div class="skill-name">Backend & Architecture</div>
+          <div class="skill-items">
+            <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">Spring Boot</span>
+            <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">Microservices</span>
+            <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">REST APIs</span>
+            <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">OAuth2</span>
+            <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">Eureka</span>
+            <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">Hazelcast</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:rgba(255,107,107,0.08)">🤖</div>
+          <div class="skill-name">AI & LLMs</div>
+          <div class="skill-items">
+            <span class="skill-chip" style="background:rgba(255,107,107,0.08);color:var(--accent3)">LLM Integration</span>
+            <span class="skill-chip" style="background:rgba(255,107,107,0.08);color:var(--accent3)">Llama 3</span>
+            <span class="skill-chip" style="background:rgba(255,107,107,0.08);color:var(--accent3)">Ollama</span>
+            <span class="skill-chip" style="background:rgba(255,107,107,0.08);color:var(--accent3)">FastAPI</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background:rgba(255,209,102,0.08)">🚀</div>
+          <div class="skill-name">DevOps & Tools</div>
+          <div class="skill-items">
+            <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">Docker</span>
+            <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">OpenShift</span>
+            <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">CI/CD</span>
+            <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">Jenkins</span>
+            <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">Istio</span>
+            <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">Locust</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ PROJECTS ════════════════════ -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-label">Work</div>
+      <h2 class="section-title">Things I've <em>built</em></h2>
+
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-num">01 · CITI AWARD</div>
+          <div class="project-badge">🏆 Top 3 / 80+ projects · Citi 2023–24</div>
+          <div class="project-title">Load Simulator Tool</div>
+          <p class="project-desc">Distributed REST API load-testing platform with no-code scenario config and CI/CD integration. Simulates 10K+ concurrent users with real-time monitoring dashboards.</p>
+          <div class="exp-tags">
+            <span class="tag">Microservices</span>
+            <span class="tag">Locust</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Jenkins</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-num">02 · PRODUCTION</div>
+          <div class="project-title">AI-Powered KYC Platform</div>
+          <p class="project-desc">End-to-end KYC document validation platform with AI-driven processing, cutting manual effort by 50%. Full async Spring Boot stack with Eureka, OAuth2, and observability.</p>
+          <div class="exp-tags">
+            <span class="tag">Spring Boot</span>
+            <span class="tag">LLM</span>
+            <span class="tag">OAuth2</span>
+            <span class="tag">Hazelcast</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-num">03 · PERSONAL · 2026</div>
+          <div class="project-title">AI Social Intelligence Engine</div>
+          <p class="project-desc">Multi-source profile intelligence with Llama 3 via Ollama — transforms unstructured data into behavioral insights. FastAPI backend with rate limiting and caching.</p>
+          <div class="exp-tags">
+            <span class="tag">Llama 3</span>
+            <span class="tag">Ollama</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-num">04 · PRODUCTION</div>
+          <div class="project-title">Trade Fee Processing System</div>
+          <p class="project-desc">650+ tickets/month, $37M+ trade volume. Automated approval microservices with intelligent routing cut manual handling time by 80% with full Istio observability.</p>
+          <div class="exp-tags">
+            <span class="tag">Java</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Istio</span>
+            <span class="tag">OpenShift</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ ACCOMPLISHMENTS ════════════════════ -->
+  <div class="divider"></div>
+  <section id="accomplishments">
+    <div class="section-inner">
+      <div class="section-label">Recognition</div>
+      <h2 class="section-title">A few <em>highlights</em></h2>
+
+      <div class="accolades-grid">
+        <div class="accolade-card reveal">
+          <div class="accolade-icon">🌐</div>
+          <div>
+            <div class="accolade-title">IMO — International Rank 37</div>
+            <div class="accolade-desc">International Mathematics Olympiad — top 37 globally. Elite problem-solving at the highest level.</div>
+          </div>
+        </div>
+        <div class="accolade-card reveal">
+          <div class="accolade-icon">🏆</div>
+          <div>
+            <div class="accolade-title">Person of the Year 2021–22</div>
+            <div class="accolade-desc">Recognized at IIT Bombay for outstanding overall performance and cross-initiative impact.</div>
+          </div>
+        </div>
+        <div class="accolade-card reveal">
+          <div class="accolade-icon">🎯</div>
+          <div>
+            <div class="accolade-title">Citi Brand Ambassador</div>
+            <div class="accolade-desc">Competitively selected to represent Citi at campus hiring, mentored new joiners, and led tech community engagements.</div>
+          </div>
+        </div>
+        <div class="accolade-card reveal">
+          <div class="accolade-icon">🥉</div>
+          <div>
+            <div class="accolade-title">Top 3 / 80+ Projects at Citi</div>
+            <div class="accolade-desc">Load Simulator placed Top 3 in Citi's 2023–24 Process Improvement Recommendation Program.</div>
+          </div>
+        </div>
+        <div class="accolade-card reveal">
+          <div class="accolade-icon">📐</div>
+          <div>
+            <div class="accolade-title">CBSE Mathematics Topper</div>
+            <div class="accolade-desc">State-level mathematics topper in CBSE 2017–18 — foundation for IIT and IMO excellence.</div>
+          </div>
+        </div>
+        <div class="accolade-card reveal">
+          <div class="accolade-icon">🎓</div>
+          <div>
+            <div class="accolade-title">IIT Bombay Alumnus</div>
+            <div class="accolade-desc">B.Tech from one of India's most prestigious engineering institutions, class of 2022.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ THEATRE & FILM ════════════════════ -->
+  <section class="alt-bg" id="theatre">
+    <div class="section-inner">
+      <div class="section-label">Theatre & Film</div>
+      <h2 class="section-title">The other <em>stage</em></h2>
+
+      <div class="theatre-header reveal">
+        <div class="theatre-intro">
+          <p>
+            Engineering is my profession, but performance is my passion. I act in short films,
+            write scripts, and direct — juggling distributed systems by day and dramatic scenes
+            by night. Three IMDb credits and counting, spanning thriller, drama, and dark comedy.
+            I also write and perform live comedy — because debugging at 2am is honestly material.
+          </p>
+        </div>
+        <a href="https://www.imdb.com/name/nm15672094/" target="_blank" rel="noopener" class="imdb-link">
+          <span style="font-size:22px;font-weight:900;color:#f5c518;line-height:1;">IMDb</span>
+          View Full Profile ↗
+        </a>
+      </div>
+
+      <!-- Film cards -->
+      <div class="films-grid">
+        <div class="film-card reveal">
+          <div class="film-year">2025</div>
+          <div class="film-title">Saaya</div>
+          <div class="film-role">Actor · Writer · Director</div>
+          <p class="film-desc">Multi-hyphenate role — wrote, directed, and starred in this atmospheric short exploring shadow and identity. The most personal project yet.</p>
+        </div>
+        <div class="film-card reveal">
+          <div class="film-year">2024</div>
+          <div class="film-title">Criminal — Me or Who?</div>
+          <div class="film-role">Actor</div>
+          <p class="film-desc">A gripping thriller that questions guilt and perspective. Part of a growing wave of independent Indian short cinema pushing genre boundaries.</p>
+        </div>
+        <div class="film-card reveal">
+          <div class="film-year">2022</div>
+          <div class="film-title">Addicted</div>
+          <div class="film-role">Actor</div>
+          <p class="film-desc">A raw, character-driven drama exploring obsession and consequence. Harsh's debut IMDb credit — made during his final year at IIT Bombay.</p>
+        </div>
+      </div>
+
+      <!-- Instagram Reels -->
+      <div class="reels-label">Featured Comedy Reels · @hrs.gupta</div>
+      <div class="reels-grid">
+
+        <div class="reel-wrapper reveal">
+          <div class="reel-embed-container" id="reel1-container">
+            <iframe
+              id="reel1-iframe"
+              src="https://www.instagram.com/reel/DVazd4zjFDL/embed/captioned/"
+              allowtransparency="true"
+              allowfullscreen="true"
+              frameborder="0"
+              scrolling="no"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="reel-fallback" id="reel1-fallback">
+            <div class="reel-fallback-icon">🎬</div>
+            <div class="reel-fallback-title">Comedy Reel #1</div>
+            <div class="reel-fallback-sub">Instagram embeds require cookies to be enabled.<br>Click below to watch directly.</div>
+            <a href="https://www.instagram.com/reel/DVazd4zjFDL" target="_blank" rel="noopener">Watch on Instagram ↗</a>
+          </div>
+        </div>
+
+        <div class="reel-wrapper reveal">
+          <div class="reel-embed-container" id="reel2-container">
+            <iframe
+              id="reel2-iframe"
+              src="https://www.instagram.com/reel/DI83TZLyR5d/embed/captioned/"
+              allowtransparency="true"
+              allowfullscreen="true"
+              frameborder="0"
+              scrolling="no"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="reel-fallback" id="reel2-fallback">
+            <div class="reel-fallback-icon">🎬</div>
+            <div class="reel-fallback-title">Comedy Reel #2</div>
+            <div class="reel-fallback-sub">Instagram embeds require cookies to be enabled.<br>Click below to watch directly.</div>
+            <a href="https://www.instagram.com/reel/DI83TZLyR5d" target="_blank" rel="noopener">Watch on Instagram ↗</a>
+          </div>
+        </div>
+
+      </div><!-- /reels-grid -->
+
+      <div style="margin-top:28px;text-align:center;">
+        <a href="https://www.instagram.com/hrs.gupta/" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-flex;">
+          See all reels @hrs.gupta ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ LIFE / HOBBIES ════════════════════ -->
+  <section id="life">
+    <div class="section-inner">
+      <div class="section-label">Beyond the terminal</div>
+      <h2 class="section-title">What keeps me <em>human</em></h2>
+      <p style="color:var(--muted);font-size:13px;max-width:500px;margin-bottom:48px;line-height:1.85;">
+        Engineering is what I do — not all I am. Here's the space between the commits.
       </p>
 
-      <div class="hero-stats">
-        <div>
-          <div class="stat-num">3.5<span>+</span></div>
-          <div class="stat-label">Years at Citi</div>
+      <div class="hobbies-grid">
+        <div class="hobby-card reveal">
+          <span class="hobby-emoji">🎭</span>
+          <div class="hobby-name">Theatre & Acting</div>
+          <div class="hobby-desc">3 IMDb credits and growing. From IIT stages to independent short films — performance is a parallel career.</div>
         </div>
-        <div>
-          <div class="stat-num">3</div>
-          <div class="stat-label">IMDb credits</div>
+        <div class="hobby-card reveal">
+          <span class="hobby-emoji">🎤</span>
+          <div class="hobby-name">Comedy Gigs</div>
+          <div class="hobby-desc">Writing and performing stand-up comedy. Turning everyday chaos (and git merge conflicts) into laughs on stage.</div>
         </div>
-        <div>
-          <div class="stat-num">99.9<span>%</span></div>
-          <div class="stat-label">Uptime</div>
+        <div class="hobby-card reveal">
+          <span class="hobby-emoji">✈️</span>
+          <div class="hobby-name">Travel</div>
+          <div class="hobby-desc">New cities, new architecture, new people. Every place is a different system to understand and explore.</div>
         </div>
-        <div>
-          <div class="stat-num">37</div>
-          <div class="stat-label">IMO World Rank</div>
+        <div class="hobby-card reveal">
+          <span class="hobby-emoji">📚</span>
+          <div class="hobby-name">Reading</div>
+          <div class="hobby-desc">Tech, philosophy, biographies, fiction. Reading is how I build the mental models that make better systems.</div>
         </div>
-      </div>
-
-      <div class="hero-actions">
-        <a href="mailto:hrsraj1999g@gmail.com" class="btn-primary">↗ Get in touch</a>
-        <a href="https://www.instagram.com/hrs.gupta/" target="_blank" class="btn-secondary">Watch my reels 🎬</a>
-      </div>
-      <div class="iit-badge">🎓 IIT Bombay · B.Tech 2018–2022</div>
-    </div>
-
-    <!-- Profile Card -->
-    <div class="hero-card reveal">
-      <div class="card-header">
-        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-        <div class="card-title">harsh@portfolio ~ identity</div>
-      </div>
-      <div class="avatar-wrap">
-        <div class="avatar-ring">
-          <img src="assets/images/favicon.ico" alt="Harsh Raj" class="avatar-img"
-               onerror="this.style.display='none';this.parentElement.innerHTML='👨&#x200D;💻'">
+        <div class="hobby-card reveal">
+          <span class="hobby-emoji">🏃</span>
+          <div class="hobby-name">Sports & Fitness</div>
+          <div class="hobby-desc">Running, gym, sport. Discipline outside the IDE carries into it. The grind is the same.</div>
         </div>
-        <div class="avatar-name">Harsh Raj</div>
-        <div class="avatar-sub">Senior Backend Engineer · Actor<br>IIT Bombay '22 · Pune, India 🇮🇳</div>
-        <div class="avatar-badges">
-          <span class="avatar-badge">Java</span>
-          <span class="avatar-badge">Spring Boot</span>
-          <span class="avatar-badge">LLM</span>
-          <span class="avatar-badge">Fintech</span>
-        </div>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-stats">
-        <div class="cstat">
-          <div class="cstat-num">10K+</div>
-          <div class="cstat-label">Docs/day</div>
-        </div>
-        <div class="cstat">
-          <div class="cstat-num">3</div>
-          <div class="cstat-label">Films</div>
-        </div>
-        <div class="cstat">
-          <div class="cstat-num">$37M</div>
-          <div class="cstat-label">Trade Vol.</div>
+        <div class="hobby-card reveal">
+          <span class="hobby-emoji">🧩</span>
+          <div class="hobby-name">Math & Puzzles</div>
+          <div class="hobby-desc">IMO World Rank 37. The love for mathematical thinking never left — it just moved into system design.</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- EXPERIENCE -->
-<div class="divider"></div>
-<section id="experience">
-  <div class="section-inner">
-    <div class="section-label">Career</div>
-    <h2 class="section-title">Where I've <em>shipped</em> things</h2>
+  <!-- ════════════════════ CONTACT ════════════════════ -->
+  <section class="alt-bg" id="contact">
+    <div class="section-inner">
+      <div class="contact-inner">
 
-    <div class="exp-container reveal">
-      <div class="exp-tabs">
-        <div class="exp-tab active" onclick="showTab(0)">
-          <div class="exp-tab-company">Citi · KYC Tech</div>
-          <div class="exp-tab-period">Apr 2025 – Present</div>
-        </div>
-        <div class="exp-tab" onclick="showTab(1)">
-          <div class="exp-tab-company">Citi Commercial Bank</div>
-          <div class="exp-tab-period">Jul 2023 – Apr 2025</div>
-        </div>
-        <div class="exp-tab" onclick="showTab(2)">
-          <div class="exp-tab-company">Citi · Client Insight</div>
-          <div class="exp-tab-period">Jul 2022 – Jul 2023</div>
-        </div>
-      </div>
-
-      <div class="exp-panels">
-        <div class="exp-panel active">
-          <div class="exp-role">Senior Software Engineer</div>
-          <div class="exp-company">↗ Citi — KYC Technology</div>
-          <div class="exp-period">APR 2025 – PRESENT</div>
-          <ul class="exp-bullets">
-            <li>Building an <strong>AI-powered KYC document processing platform</strong> with async Spring Boot microservices — reducing manual validation effort by <strong>50%</strong> and handling <strong>10K+ documents/day</strong>.</li>
-            <li>Designed end-to-end microservices architecture with <strong>centralized OAuth2 API Gateway</strong>, Eureka service discovery, distributed caching, and observability — <strong>99.9% availability</strong>, <strong>~30% lower auth overhead</strong>.</li>
-            <li>Architected an <strong>AI-driven Sprint Analytics platform</strong> generating JIRA-linked performance insights through a distributed caching layer for low-latency enterprise reporting.</li>
-          </ul>
-          <div class="exp-tags">
-            <span class="tag">Spring Boot</span><span class="tag">OAuth2</span><span class="tag">Eureka</span>
-            <span class="tag">LLM Integration</span><span class="tag">Hazelcast</span><span class="tag">Microservices</span>
+        <div class="contact-text reveal">
+          <div class="section-label" style="margin-bottom:18px;">Contact</div>
+          <h2>Let's build<br>something <em>great</em></h2>
+          <p>
+            Open to senior backend roles, architectural consulting, film collaborations,
+            or just a great conversation about fintech, LLMs, or comedy writing.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:hrsraj1999g@gmail.com" class="contact-link">
+              <div class="contact-link-icon">✉️</div>
+              <div>
+                <div class="contact-link-label">Email</div>
+                <div>hrsraj1999g@gmail.com</div>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/harsh-raj-8539a8172/" target="_blank" rel="noopener" class="contact-link">
+              <div class="contact-link-icon">💼</div>
+              <div>
+                <div class="contact-link-label">LinkedIn</div>
+                <div>harsh-raj-8539a8172</div>
+              </div>
+            </a>
+            <a href="https://github.com/hrsraj" target="_blank" rel="noopener" class="contact-link">
+              <div class="contact-link-icon">🐙</div>
+              <div>
+                <div class="contact-link-label">GitHub</div>
+                <div>@hrsraj</div>
+              </div>
+            </a>
+            <a href="https://www.instagram.com/hrs.gupta/" target="_blank" rel="noopener" class="contact-link">
+              <div class="contact-link-icon">📸</div>
+              <div>
+                <div class="contact-link-label">Instagram</div>
+                <div>@hrs.gupta</div>
+              </div>
+            </a>
+            <a href="https://www.imdb.com/name/nm15672094/" target="_blank" rel="noopener" class="contact-link">
+              <div class="contact-link-icon" style="background:rgba(245,197,24,0.1);">🎬</div>
+              <div>
+                <div class="contact-link-label">IMDb</div>
+                <div>nm15672094</div>
+              </div>
+            </a>
           </div>
         </div>
 
-        <div class="exp-panel">
-          <div class="exp-role">SDE-2</div>
-          <div class="exp-company">↗ Citi Commercial Bank</div>
-          <div class="exp-period">JUL 2023 – APR 2025</div>
-          <ul class="exp-bullets">
-            <li>Led backend of a <strong>global skill analytics platform</strong> with Hazelcast caching, achieving <strong>2x API throughput</strong>.</li>
-            <li>Independently built a <strong>distributed load simulation platform</strong> — CI/CD, no-code config, 10K+ concurrent users. <strong>Top 3 of 80+ projects</strong> at Citi 2023–24.</li>
-            <li>Modularized legacy monolith into a <strong>micro-frontend architecture</strong>, improving deployment agility.</li>
-          </ul>
-          <div class="exp-tags">
-            <span class="tag">Hazelcast</span><span class="tag">Locust</span><span class="tag">CI/CD</span>
-            <span class="tag">Jenkins</span><span class="tag">React</span><span class="tag">Docker</span>
+        <div class="contact-right reveal">
+          <h3>Send a message</h3>
+          <p>I'll get back to you within a day.</p>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name" autocomplete="name"/>
           </div>
-        </div>
-
-        <div class="exp-panel">
-          <div class="exp-role">Developer</div>
-          <div class="exp-company">↗ Citi — Client Insight Analytics</div>
-          <div class="exp-period">JUL 2022 – JUL 2023</div>
-          <ul class="exp-bullets">
-            <li>Built trade fee approval microservices processing <strong>650+ tickets/month</strong>, <strong>$37M+ trade volume</strong>, cutting manual handling by <strong>80%</strong>.</li>
-            <li>Implemented an <strong>Istio service mesh observability stack</strong> on OpenShift for telemetry, tracing, and monitoring.</li>
-            <li>Redesigned backend during PrimeNG → AG Grid migration, boosting <strong>dashboard load time by 40–60%</strong>.</li>
-          </ul>
-          <div class="exp-tags">
-            <span class="tag">Istio</span><span class="tag">OpenShift</span><span class="tag">REST APIs</span>
-            <span class="tag">AG Grid</span><span class="tag">Java</span><span class="tag">SQL</span>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" autocomplete="email"/>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section class="alt-bg" id="skills">
-  <div class="section-inner">
-    <div class="section-label">Expertise</div>
-    <h2 class="section-title">The <em>stack</em> I live in</h2>
-    <div class="skills-grid reveal">
-      <div class="skill-card">
-        <div class="skill-icon" style="background:rgba(0,229,255,0.08)">⚡</div>
-        <div class="skill-name">Languages</div>
-        <div class="skill-items">
-          <span class="skill-chip" style="background:rgba(0,229,255,0.08);color:var(--accent)">Java</span>
-          <span class="skill-chip" style="background:rgba(0,229,255,0.08);color:var(--accent)">Python</span>
-          <span class="skill-chip" style="background:rgba(0,229,255,0.08);color:var(--accent)">SQL</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon" style="background:rgba(123,97,255,0.08)">🏗️</div>
-        <div class="skill-name">Backend & Architecture</div>
-        <div class="skill-items">
-          <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">Spring Boot</span>
-          <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">Microservices</span>
-          <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">REST APIs</span>
-          <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">OAuth2</span>
-          <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">Eureka</span>
-          <span class="skill-chip" style="background:rgba(123,97,255,0.08);color:var(--accent2)">Hazelcast</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon" style="background:rgba(255,107,107,0.08)">🤖</div>
-        <div class="skill-name">AI & LLMs</div>
-        <div class="skill-items">
-          <span class="skill-chip" style="background:rgba(255,107,107,0.08);color:var(--accent3)">LLM Integration</span>
-          <span class="skill-chip" style="background:rgba(255,107,107,0.08);color:var(--accent3)">Llama 3</span>
-          <span class="skill-chip" style="background:rgba(255,107,107,0.08);color:var(--accent3)">Ollama</span>
-          <span class="skill-chip" style="background:rgba(255,107,107,0.08);color:var(--accent3)">FastAPI</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon" style="background:rgba(255,209,102,0.08)">🚀</div>
-        <div class="skill-name">DevOps & Tools</div>
-        <div class="skill-items">
-          <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">Docker</span>
-          <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">OpenShift</span>
-          <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">CI/CD</span>
-          <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">Jenkins</span>
-          <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">Istio</span>
-          <span class="skill-chip" style="background:rgba(255,209,102,0.08);color:var(--gold)">Locust</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-    <div class="section-label">Work</div>
-    <h2 class="section-title">Things I've <em>built</em></h2>
-    <div class="projects-grid">
-      <div class="project-card reveal">
-        <div class="project-num">01 · CITI AWARD</div>
-        <div class="project-badge">🏆 Top 3 / 80+ projects · Citi 2023–24</div>
-        <div class="project-title">Load Simulator Tool</div>
-        <p class="project-desc">Distributed REST API load-testing platform with no-code scenario config and CI/CD integration. Simulates 10K+ concurrent users with real-time monitoring.</p>
-        <div class="exp-tags"><span class="tag">Microservices</span><span class="tag">Locust</span><span class="tag">CI/CD</span><span class="tag">Jenkins</span></div>
-      </div>
-      <div class="project-card reveal">
-        <div class="project-num">02 · PRODUCTION</div>
-        <div class="project-title">AI-Powered KYC Platform</div>
-        <p class="project-desc">End-to-end KYC document validation platform with AI-driven processing, cutting manual effort by 50%. Full async Spring Boot stack with Eureka, OAuth2, and observability.</p>
-        <div class="exp-tags"><span class="tag">Spring Boot</span><span class="tag">LLM</span><span class="tag">OAuth2</span><span class="tag">Hazelcast</span></div>
-      </div>
-      <div class="project-card reveal">
-        <div class="project-num">03 · PERSONAL · 2026</div>
-        <div class="project-title">AI Social Intelligence Engine</div>
-        <p class="project-desc">Multi-source profile intelligence with Llama 3 via Ollama — transforms unstructured data into behavioral insights. FastAPI backend with rate limiting and caching.</p>
-        <div class="exp-tags"><span class="tag">Llama 3</span><span class="tag">Ollama</span><span class="tag">FastAPI</span><span class="tag">Python</span></div>
-      </div>
-      <div class="project-card reveal">
-        <div class="project-num">04 · PRODUCTION</div>
-        <div class="project-title">Trade Fee Processing System</div>
-        <p class="project-desc">650+ tickets/month, $37M+ trade volume. Automated approval microservices with intelligent routing cut manual handling time by 80% with Istio observability.</p>
-        <div class="exp-tags"><span class="tag">Java</span><span class="tag">REST APIs</span><span class="tag">Istio</span><span class="tag">OpenShift</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ACCOMPLISHMENTS -->
-<div class="divider"></div>
-<section>
-  <div class="section-inner">
-    <div class="section-label">Recognition</div>
-    <h2 class="section-title">A few <em>highlights</em></h2>
-    <div class="accolades-grid">
-      <div class="accolade-card reveal"><div class="accolade-icon">🌐</div><div><div class="accolade-title">IMO — International Rank 37</div><div class="accolade-desc">International Mathematics Olympiad — top 37 globally. Elite problem-solving at the highest level.</div></div></div>
-      <div class="accolade-card reveal"><div class="accolade-icon">🏆</div><div><div class="accolade-title">Person of the Year 2021–22</div><div class="accolade-desc">Recognized at IIT Bombay for outstanding performance and cross-initiative impact.</div></div></div>
-      <div class="accolade-card reveal"><div class="accolade-icon">🎯</div><div><div class="accolade-title">Citi Brand Ambassador</div><div class="accolade-desc">Competitively selected to represent Citi at campus hiring events, mentored new joiners and led tech engagements.</div></div></div>
-      <div class="accolade-card reveal"><div class="accolade-icon">🥉</div><div><div class="accolade-title">Top 3 / 80+ Projects at Citi</div><div class="accolade-desc">Load Simulator placed Top 3 in Citi's 2023–24 Process Improvement Recommendation Program.</div></div></div>
-      <div class="accolade-card reveal"><div class="accolade-icon">📐</div><div><div class="accolade-title">CBSE Mathematics Topper</div><div class="accolade-desc">State-level mathematics topper in CBSE 2017–18 — foundation for IIT and IMO excellence.</div></div></div>
-      <div class="accolade-card reveal"><div class="accolade-icon">🎓</div><div><div class="accolade-title">IIT Bombay Alumnus</div><div class="accolade-desc">B.Tech from one of India's most prestigious engineering institutions, class of 2022.</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- THEATRE & FILM -->
-<section class="alt-bg" id="theatre">
-  <div class="section-inner">
-    <div class="section-label">Theatre & Film</div>
-    <h2 class="section-title">The other <em>stage</em></h2>
-
-    <div class="theatre-header reveal">
-      <div class="theatre-intro">
-        <p>
-          Engineering is my profession, but performance is my passion. I act in short films, write scripts,
-          and direct — juggling distributed systems by day and dramatic scenes by night.
-          Three IMDb credits and counting, spanning thriller, drama, and dark comedy.
-          I also write and perform live comedy — because debugging at 2am is honestly material.
-        </p>
-      </div>
-      <a href="https://www.imdb.com/name/nm15672094/" target="_blank" class="imdb-link">
-        <span style="font-size:22px;font-weight:900;color:#f5c518;line-height:1;">IMDb</span>
-        View Full Profile ↗
-      </a>
-    </div>
-
-    <div class="films-grid">
-      <div class="film-card reveal">
-        <div class="film-year">2025</div>
-        <div class="film-title">Saaya</div>
-        <div class="film-role">Actor · Writer · Director</div>
-        <p class="film-desc">Multi-hyphenate role — wrote, directed, and starred in this atmospheric short exploring shadow and identity. The most personal project yet.</p>
-      </div>
-      <div class="film-card reveal">
-        <div class="film-year">2024</div>
-        <div class="film-title">Criminal — Me or Who?</div>
-        <div class="film-role">Actor</div>
-        <p class="film-desc">A gripping thriller that questions guilt and perspective. Part of a growing wave of independent Indian short cinema pushing genre boundaries.</p>
-      </div>
-      <div class="film-card reveal">
-        <div class="film-year">2022</div>
-        <div class="film-title">Addicted</div>
-        <div class="film-role">Actor</div>
-        <p class="film-desc">A raw, character-driven drama exploring obsession and consequence. Harsh's debut IMDb credit — made during his final year at IIT Bombay.</p>
-      </div>
-    </div>
-
-    <!-- Comedy Reels -->
-    <div class="reels-label">Featured Comedy Reels · @hrs.gupta</div>
-    <div class="reels-grid">
-
-      <div class="reel-wrapper reveal">
-        <div class="reel-embed-container" id="reel1-container">
-          <iframe
-            id="reel1-iframe"
-            src="https://www.instagram.com/reel/DVazd4zjFDL/embed/captioned/"
-            allowtransparency="true"
-            allowfullscreen="true"
-            frameborder="0"
-            scrolling="no"
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="reel-fallback" id="reel1-fallback">
-          <div class="reel-fallback-icon">🎬</div>
-          <div class="reel-fallback-title">Comedy Reel #1</div>
-          <div class="reel-fallback-sub">Instagram embeds require cookies to be enabled.<br>Click below to watch directly.</div>
-          <a href="https://www.instagram.com/reel/DVazd4zjFDL" target="_blank">Watch on Instagram ↗</a>
-        </div>
-      </div>
-
-      <div class="reel-wrapper reveal">
-        <div class="reel-embed-container" id="reel2-container">
-          <iframe
-            id="reel2-iframe"
-            src="https://www.instagram.com/reel/DI83TZLyR5d/embed/captioned/"
-            allowtransparency="true"
-            allowfullscreen="true"
-            frameborder="0"
-            scrolling="no"
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="reel-fallback" id="reel2-fallback">
-          <div class="reel-fallback-icon">🎬</div>
-          <div class="reel-fallback-title">Comedy Reel #2</div>
-          <div class="reel-fallback-sub">Instagram embeds require cookies to be enabled.<br>Click below to watch directly.</div>
-          <a href="https://www.instagram.com/reel/DI83TZLyR5d" target="_blank">Watch on Instagram ↗</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="margin-top:28px;text-align:center;">
-      <a href="https://www.instagram.com/hrs.gupta/" target="_blank" class="btn-secondary" style="display:inline-flex;">
-        See all reels @hrs.gupta ↗
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- LIFE / HOBBIES -->
-<section id="life">
-  <div class="section-inner">
-    <div class="section-label">Beyond the terminal</div>
-    <h2 class="section-title">What keeps me <em>human</em></h2>
-    <p style="color:var(--muted);font-size:13px;max-width:500px;margin-bottom:48px;line-height:1.85;">
-      Engineering is what I do — not all I am. Here's the space between the commits.
-    </p>
-    <div class="hobbies-grid">
-      <div class="hobby-card reveal">
-        <span class="hobby-emoji">🎭</span>
-        <div class="hobby-name">Theatre & Acting</div>
-        <div class="hobby-desc">3 IMDb credits and growing. From IIT stages to independent short films — performance is a parallel career.</div>
-      </div>
-      <div class="hobby-card reveal">
-        <span class="hobby-emoji">🎤</span>
-        <div class="hobby-name">Comedy Gigs</div>
-        <div class="hobby-desc">Writing and performing stand-up comedy. Turning everyday chaos (and git merge conflicts) into laughs on stage.</div>
-      </div>
-      <div class="hobby-card reveal">
-        <span class="hobby-emoji">✈️</span>
-        <div class="hobby-name">Travel</div>
-        <div class="hobby-desc">New cities, new architecture, new people. Every place is a different system to understand and explore.</div>
-      </div>
-      <div class="hobby-card reveal">
-        <span class="hobby-emoji">📚</span>
-        <div class="hobby-name">Reading</div>
-        <div class="hobby-desc">Tech, philosophy, biographies, fiction. Reading is how I build the mental models that make better systems.</div>
-      </div>
-      <div class="hobby-card reveal">
-        <span class="hobby-emoji">🏃</span>
-        <div class="hobby-name">Sports & Fitness</div>
-        <div class="hobby-desc">Running, gym, sport. Discipline outside the IDE carries into it. The grind is the same.</div>
-      </div>
-      <div class="hobby-card reveal">
-        <span class="hobby-emoji">🧩</span>
-        <div class="hobby-name">Math & Puzzles</div>
-        <div class="hobby-desc">IMO World Rank 37. The love for mathematical thinking never left — it just moved into system design.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="alt-bg" id="contact">
-  <div class="section-inner">
-    <div class="contact-inner">
-      <div class="contact-text reveal">
-        <div class="section-label" style="margin-bottom:18px;">Contact</div>
-        <h2>Let's build<br>something <em>great</em></h2>
-        <p>
-          Open to senior backend roles, architectural consulting, film collaborations,
-          or just a great conversation about fintech, LLMs, or comedy writing.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:hrsraj1999g@gmail.com" class="contact-link">
-            <div class="contact-link-icon">✉️</div>
-            <div><div class="contact-link-label">Email</div><div>hrsraj1999g@gmail.com</div></div>
-          </a>
-          <a href="https://www.linkedin.com/in/harsh-raj-8539a8172/" target="_blank" class="contact-link">
-            <div class="contact-link-icon">💼</div>
-            <div><div class="contact-link-label">LinkedIn</div><div>harsh-raj-8539a8172</div></div>
-          </a>
-          <a href="https://github.com/hrsraj" target="_blank" class="contact-link">
-            <div class="contact-link-icon">🐙</div>
-            <div><div class="contact-link-label">GitHub</div><div>@hrsraj</div></div>
-          </a>
-          <a href="https://www.instagram.com/hrs.gupta/" target="_blank" class="contact-link">
-            <div class="contact-link-icon">📸</div>
-            <div><div class="contact-link-label">Instagram</div><div>@hrs.gupta</div></div>
-          </a>
-          <a href="https://www.imdb.com/name/nm15672094/" target="_blank" class="contact-link">
-            <div class="contact-link-icon" style="background:rgba(245,197,24,0.1);">🎬</div>
-            <div><div class="contact-link-label">IMDb</div><div>nm15672094</div></div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tech collab, film project, comedy gig, or just saying hi..."></textarea>
+          </div>
+          <a href="mailto:hrsraj1999g@gmail.com" class="btn-primary" style="width:100%;justify-content:center;display:flex;">
+            Send Message ↗
           </a>
         </div>
-      </div>
 
-      <div class="contact-right reveal">
-        <h3>Send a message</h3>
-        <p>I'll get back to you within a day.</p>
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" placeholder="Your name">
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="your@email.com">
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tech collab, film project, comedy gig, or just saying hi..."></textarea>
-        </div>
-        <a href="mailto:hrsraj1999g@gmail.com" class="btn-primary" style="width:100%;justify-content:center;display:flex;">Send Message ↗</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-left">
-    Designed & built by <strong>Harsh Raj</strong> · Engineer · Actor · IIT Bombay '22 · Pune, India
-  </div>
-  <div class="footer-right">
-    <a href="https://github.com/hrsraj" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/harsh-raj-8539a8172/" target="_blank">LinkedIn</a>
-    <a href="https://www.instagram.com/hrs.gupta/" target="_blank">Instagram</a>
-    <a href="https://www.imdb.com/name/nm15672094/" target="_blank">IMDb</a>
-  </div>
-</footer>
+  <!-- ════════════════════ FOOTER ════════════════════ -->
+  <footer>
+    <div class="footer-left">
+      Designed &amp; built by <strong>Harsh Raj</strong> · Engineer · Actor · IIT Bombay '22 · Pune, India
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/hrsraj" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/harsh-raj-8539a8172/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/hrs.gupta/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.imdb.com/name/nm15672094/" target="_blank" rel="noopener">IMDb</a>
+    </div>
+  </footer>
 
-<script>
-  // ——— CURSOR ———
-  const cur = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx=0, my=0, rx=0, ry=0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cur.style.left = mx + 'px'; cur.style.top = my + 'px';
-  });
-  (function animRing() {
-    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-    requestAnimationFrame(animRing);
-  })();
-  document.querySelectorAll('a, button, .exp-tab, .hobby-card, .project-card, .film-card, .reel-wrapper, .accolade-card').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cur.style.transform = 'translate(-50%,-50%) scale(2.2)';
-      ring.style.borderColor = 'rgba(0,229,255,0.7)';
-      ring.style.transform = 'translate(-50%,-50%) scale(1.4)';
-    });
-    el.addEventListener('mouseleave', () => {
-      cur.style.transform = 'translate(-50%,-50%) scale(1)';
-      ring.style.borderColor = 'rgba(0,229,255,0.35)';
-      ring.style.transform = 'translate(-50%,-50%) scale(1)';
-    });
-  });
+  <!-- JS loaded last for performance -->
+  <script src="assets/js/main.js"></script>
 
-  // ——— EXPERIENCE TABS ———
-  function showTab(i) {
-    document.querySelectorAll('.exp-tab').forEach((t, idx) => t.classList.toggle('active', idx === i));
-    document.querySelectorAll('.exp-panel').forEach((p, idx) => p.classList.toggle('active', idx === i));
-  }
-
-  // ——— SCROLL REVEAL ———
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 70);
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  // ——— INSTAGRAM REEL FALLBACK ———
-  // Instagram embeds may be blocked by browser privacy settings.
-  // Show a clickable fallback card if the iframe doesn't load within 5s.
-  function setupReelFallback(iframeId, containerId, fallbackId) {
-    const iframe = document.getElementById(iframeId);
-    if (!iframe) return;
-    let loaded = false;
-    iframe.addEventListener('load', () => { loaded = true; });
-    setTimeout(() => {
-      if (!loaded) {
-        const container = document.getElementById(containerId);
-        const fallback = document.getElementById(fallbackId);
-        if (container) container.style.display = 'none';
-        if (fallback) fallback.style.display = 'flex';
-      }
-    }, 5000);
-  }
-  setupReelFallback('reel1-iframe', 'reel1-container', 'reel1-fallback');
-  setupReelFallback('reel2-iframe', 'reel2-container', 'reel2-fallback');
-
-  // ——— ACTIVE NAV ———
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 180) current = s.getAttribute('id'); });
-    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : ''; });
-  });
-</script>
 </body>
 </html>
